@@ -377,7 +377,7 @@ const PAGE_STYLES = `
   .section-title.animate-up { animation: fadeInUp 0.8s ease-out forwards; }
   .section-title span { color: #BFC2C7; }
 
-  .services { background: linear-gradient(135deg, #FFFFFF 0%, #FAF9F6 100%); padding: 120px 48px; }
+  .services { background: linear-gradient(135deg, #FFFFFF 0%, #FAF9F6 100%); padding: 160px 48px 120px; }
   .services-content { max-width: 1200px; margin: 0 auto; }
   .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; align-items: start; }
   .service-card { background: #FFFFFF; border: 1px solid #E5E3DE; border-radius: 8px; padding: 40px; transition: all 0.4s; cursor: pointer; display: flex; flex-direction: column; min-height: 500px; }
@@ -507,29 +507,47 @@ export default function Home() {
       rootMargin: "0px 0px -50px 0px",
     };
 
+    const timers = new Map<Element, number>();
+
+    const applyEnter = (el: HTMLElement) => {
+      if (el.classList.contains("project-card") || el.classList.contains("service-card")) {
+        const parent = el.parentElement;
+        if (!parent) return;
+        const index = Array.from(parent.children).indexOf(el);
+
+        el.classList.remove("animate-left", "animate-right");
+        void el.offsetWidth;
+
+        if (index % 2 === 0) {
+          el.classList.add("animate-left");
+        } else {
+          el.classList.add("animate-right");
+        }
+      } else {
+        el.classList.remove("animate-up");
+        void el.offsetWidth;
+        el.classList.add("animate-up");
+      }
+    };
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
+        const el = entry.target as HTMLElement;
+
+        const existingTimer = timers.get(el);
+        if (existingTimer) {
+          window.clearTimeout(existingTimer);
+          timers.delete(el);
+        }
+
         if (entry.isIntersecting) {
-          const el = entry.target as HTMLElement;
-
-          if (el.classList.contains("project-card") || el.classList.contains("service-card")) {
-            const parent = el.parentElement;
-            if (!parent) return;
-            const index = Array.from(parent.children).indexOf(el);
-
-            el.classList.remove("animate-left", "animate-right");
-            void el.offsetWidth;
-
-            if (index % 2 === 0) {
-              el.classList.add("animate-left");
-            } else {
-              el.classList.add("animate-right");
-            }
-          } else {
-            el.classList.remove("animate-up");
-            void el.offsetWidth;
-            el.classList.add("animate-up");
-          }
+          // Small debounce so a boundary that flickers in/out for a
+          // frame or two doesn't retrigger the animation repeatedly.
+          const timer = window.setTimeout(() => {
+            applyEnter(el);
+            timers.delete(el);
+          }, 80);
+          timers.set(el, timer);
         }
       });
     }, observerOptions);
