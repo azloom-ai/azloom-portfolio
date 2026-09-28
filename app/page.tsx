@@ -35,7 +35,9 @@ const BODY_HTML = `
     <div class="philosophy-content" data-reveal="up">
       <div class="philosophy-label">Nuestra visión</div>
       <h2 class="philosophy-title">La IA no reemplaza personas. Las libera.</h2>
-      <p class="philosophy-text">Sabemos que la inteligencia artificial genera dudas. En redes sociales el discurso es de miedo: robots que quitan trabajos, un futuro sin lugar para las personas. Nosotros lo vemos distinto. La IA es una herramienta, como lo fue la calculadora o la computadora en su momento — no reemplaza tu criterio, tu experiencia ni tu visión de negocio. Los potencia. Usada bien, la tecnología no le quita el trabajo a nadie: le da a cada persona más tiempo y espacio para hacer mejor lo que ya sabe hacer.</p>
+      <p class="philosophy-text">Sabemos que la inteligencia artificial genera dudas. En redes sociales el discurso es de miedo: robots que quitan trabajos, un futuro sin lugar para las personas.</p>
+      <p class="philosophy-text">Pero esto ya pasó antes. Cuando llegó la calculadora, muchos contadores temieron quedarse sin oficio — ¿para qué alguien que suma a mano si una máquina lo hace en segundos? No desaparecieron: dejaron de perder horas sumando columnas y pasaron a interpretar esos números, a asesorar, a tomar decisiones que una máquina no puede tomar. Cuando llegó la computadora personal, se temió lo mismo con oficinistas, diseñadores y arquitectos. Tampoco desaparecieron: cambiaron la máquina de escribir y el tablero de dibujo por herramientas que les permitían hacer en minutos lo que antes tomaba días, y usaron ese tiempo ganado para pensar mejor, no solo para producir más rápido.</p>
+      <p class="philosophy-text">Con la IA está pasando exactamente lo mismo, solo que más rápido y más visible. No es magia ni es una amenaza: es una herramienta, y como toda herramienta, no reemplaza tu criterio, tu experiencia ni tu visión de negocio — los potencia. Usada bien, la tecnología nunca le quitó el trabajo a nadie. Le dio a cada persona más tiempo y espacio para hacer mejor lo que ya sabía hacer.</p>
     </div>
   </section>
 
@@ -379,7 +381,8 @@ const PAGE_STYLES = `
   .philosophy-content { max-width: 760px; margin: 0 auto; }
   .philosophy-label { font-size: 11px; font-weight: 600; color: #BFC2C7; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 1px; font-family: 'Cascadia Code', monospace; }
   .philosophy-title { font-size: 36px; font-weight: 700; color: #FFFFFF; margin-bottom: 24px; line-height: 1.3; }
-  .philosophy-text { font-size: 17px; color: #BFC2C7; line-height: 1.8; }
+  .philosophy-text { font-size: 17px; color: #BFC2C7; line-height: 1.8; margin-bottom: 20px; }
+  .philosophy-text:last-child { margin-bottom: 0; }
 
   .btn { padding: 14px 32px; border-radius: 4px; border: none; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.3s; }
   .btn-ink { background: #111113; color: #FFFFFF; }
