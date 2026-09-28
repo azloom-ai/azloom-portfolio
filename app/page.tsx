@@ -359,11 +359,11 @@ const BODY_HTML = `
 
 const PAGE_STYLES = `
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { background: #FAF9F6; color: #111113; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+  html { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
+  body { background: #FAF9F6; color: #111113; font-family: 'Inter', sans-serif; overflow-x: hidden; width: 100%; max-width: 100vw; }
 
   .header { display: flex; justify-content: space-between; align-items: center; padding: 24px 48px; border-bottom: 1px solid #E5E3DE; position: sticky; top: 0; background: #FAF9F6; z-index: 100; backdrop-filter: blur(10px); }
-  .logo { width: 100px; animation: slideInLeft 0.6s ease-out; }
+  .logo { width: 150px; flex-shrink: 0; animation: slideInLeft 0.6s ease-out; }
   .nav { display: flex; gap: 32px; }
   .nav a { font-size: 14px; font-weight: 500; color: #111113; text-decoration: none; position: relative; transition: color 0.3s; }
   .nav a:after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: #BFC2C7; transition: width 0.3s; }
@@ -464,7 +464,10 @@ const PAGE_STYLES = `
     .services { padding: 80px 24px; }
     .services-grid { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; }
-    .header { padding: 20px 24px; }
+    .header { padding: 16px 20px; flex-wrap: wrap; row-gap: 10px; }
+    .logo { width: 90px; }
+    .nav { gap: 14px; flex-wrap: wrap; }
+    .nav a { font-size: 12px; }
     .service-details { font-size: 13px; }
     .modal-content { padding: 32px; }
     .philosophy { padding: 80px 24px; }
