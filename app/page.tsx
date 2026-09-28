@@ -366,7 +366,6 @@ const PAGE_STYLES = `
   .hero-title .palabra-2 { animation: slideFromLeft 0.8s ease-out 0.2s backwards; }
   .hero-title span { background: linear-gradient(135deg, #111113, #BFC2C7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: slideFromRight 0.8s ease-out 0.3s backwards; }
   .hero-text { font-size: 18px; color: #2B2B2E; line-height: 1.7; max-width: 600px; margin-bottom: 48px; }
-  .hero-text.animate-up { animation: fadeInUp 0.8s ease-out forwards; }
 
   .btn { padding: 14px 32px; border-radius: 4px; border: none; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.3s; }
   .btn-ink { background: #111113; color: #FFFFFF; }
@@ -374,15 +373,12 @@ const PAGE_STYLES = `
 
   .section { padding: 120px 48px; max-width: 1200px; margin: 0 auto; }
   .section-title { font-size: 48px; font-weight: 700; margin-bottom: 64px; }
-  .section-title.animate-up { animation: fadeInUp 0.8s ease-out forwards; }
   .section-title span { color: #BFC2C7; }
 
   .services { background: linear-gradient(135deg, #FFFFFF 0%, #FAF9F6 100%); padding: 160px 48px 120px; }
   .services-content { max-width: 1200px; margin: 0 auto; }
   .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; align-items: start; }
   .service-card { background: #FFFFFF; border: 1px solid #E5E3DE; border-radius: 8px; padding: 40px; transition: all 0.4s; cursor: pointer; display: flex; flex-direction: column; min-height: 500px; }
-  .service-card.animate-left { animation: slideFromLeft 1s ease-out forwards; }
-  .service-card.animate-right { animation: slideFromRight 1s ease-out forwards; }
   .service-card:hover { transform: translateY(-8px); border-color: #BFC2C7; }
   .service-title { font-size: 20px; font-weight: 700; margin-bottom: 16px; text-align: center; height: 60px; display: flex; align-items: center; justify-content: center; }
   .service-desc { font-size: 15px; color: #2B2B2E; margin-bottom: 24px; line-height: 1.7; text-align: center; height: 80px; display: flex; align-items: center; justify-content: center; }
@@ -412,8 +408,6 @@ const PAGE_STYLES = `
 
   .projects-container { display: grid; gap: 24px; }
   .project-card { background: #FFFFFF; border: 1px solid #E5E3DE; border-radius: 8px; padding: 40px; transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1); cursor: pointer; }
-  .project-card.animate-left { animation: slideFromLeft 1s ease-out forwards; }
-  .project-card.animate-right { animation: slideFromRight 1s ease-out forwards; }
   .project-card:hover { transform: translateY(-8px); border-color: #BFC2C7; box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
   .project-header { display: flex; gap: 28px; align-items: flex-start; }
   .project-number { font-size: 28px; font-weight: 700; color: #BFC2C7; flex-shrink: 0; font-family: 'Cascadia Code', monospace; letter-spacing: 2px; }
@@ -427,9 +421,7 @@ const PAGE_STYLES = `
   .cta-section { padding: 120px 48px; text-align: center; background: #FFFFFF; }
   .cta-container { max-width: 700px; margin: 0 auto; }
   .cta-title { font-size: 48px; font-weight: 700; margin-bottom: 24px; }
-  .cta-title.animate-up { animation: fadeInUp 0.8s ease-out forwards; }
   .cta-text { font-size: 18px; color: #2B2B2E; margin-bottom: 48px; line-height: 1.7; }
-  .cta-text.animate-up { animation: fadeInUp 0.8s ease-out forwards; }
 
   .footer { background: #FAF9F6; border-top: 1px solid #E5E3DE; padding: 80px 48px; }
   .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; max-width: 1200px; margin: 0 auto 48px; }
@@ -502,40 +494,8 @@ export default function Home() {
     };
     window.addEventListener("click", onWindowClick);
 
-    const observerOptions: IntersectionObserverInit = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px",
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const el = entry.target as HTMLElement;
-
-        // Animate once, then stop observing — avoids any flicker from
-        // the element crossing the trigger boundary more than once
-        // during normal (stepped) mouse-wheel / trackpad scrolling.
-        observer.unobserve(el);
-
-        if (el.classList.contains("project-card") || el.classList.contains("service-card")) {
-          const parent = el.parentElement;
-          if (!parent) return;
-          const index = Array.from(parent.children).indexOf(el);
-          el.classList.add(index % 2 === 0 ? "animate-left" : "animate-right");
-        } else {
-          el.classList.add("animate-up");
-        }
-      });
-    }, observerOptions);
-
-    const els = document.querySelectorAll(
-      ".project-card, .service-card, .section-title, .hero-text, .cta-title, .cta-text"
-    );
-    els.forEach((el) => observer.observe(el));
-
     return () => {
       window.removeEventListener("click", onWindowClick);
-      observer.disconnect();
     };
   }, []);
 
