@@ -33,9 +33,9 @@ const BODY_HTML = `
 
   <section id="servicios" class="services">
     <div class="services-content">
-      <h2 class="section-title">Qué <span>hacemos</span></h2>
+      <h2 class="section-title" data-reveal="up">Qué <span>hacemos</span></h2>
       <div class="services-grid">
-        <div class="service-card" onclick="openModal('auto')">
+        <div class="service-card" data-reveal="left" onclick="openModal('auto')">
           <h3 class="service-title">Automatización</h3>
           <p class="service-desc">Procesos automáticos que funcionan sin intervención manual.</p>
           <div class="service-details">
@@ -58,7 +58,7 @@ const BODY_HTML = `
           </div>
         </div>
 
-        <div class="service-card" onclick="openModal('seo')">
+        <div class="service-card" data-reveal="right" onclick="openModal('seo')">
           <h3 class="service-title">SEO para Google</h3>
           <p class="service-desc">Que encuentren tu negocio cuando buscan en Google.</p>
           <div class="service-details">
@@ -81,7 +81,7 @@ const BODY_HTML = `
           </div>
         </div>
 
-        <div class="service-card" onclick="openModal('geo')">
+        <div class="service-card" data-reveal="left" onclick="openModal('geo')">
           <h3 class="service-title">GEO para ChatGPT &amp; IA</h3>
           <p class="service-desc">Que la IA recomiende tu negocio cuando le pregunten.</p>
           <div class="service-details">
@@ -104,7 +104,7 @@ const BODY_HTML = `
           </div>
         </div>
 
-        <div class="service-card" onclick="openModal('aeo')">
+        <div class="service-card" data-reveal="right" onclick="openModal('aeo')">
           <h3 class="service-title">AEO - Aparecer como Respuesta</h3>
           <p class="service-desc">Que TÚ seas la respuesta (no solo recomendado).</p>
           <div class="service-details">
@@ -131,9 +131,9 @@ const BODY_HTML = `
   </section>
 
   <section id="proyectos" class="section">
-    <h2 class="section-title">Proyectos <span>en producción</span></h2>
+    <h2 class="section-title" data-reveal="up">Proyectos <span>en producción</span></h2>
     <div class="projects-container">
-      <div class="project-card">
+      <div class="project-card" data-reveal="left">
         <div class="project-header">
           <div class="project-number">01</div>
           <div class="project-content">
@@ -145,7 +145,7 @@ const BODY_HTML = `
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-reveal="right">
         <div class="project-header">
           <div class="project-number">02</div>
           <div class="project-content">
@@ -157,7 +157,7 @@ const BODY_HTML = `
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-reveal="left">
         <div class="project-header">
           <div class="project-number">03</div>
           <div class="project-content">
@@ -169,7 +169,7 @@ const BODY_HTML = `
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-reveal="right">
         <div class="project-header">
           <div class="project-number">04</div>
           <div class="project-content">
@@ -181,7 +181,7 @@ const BODY_HTML = `
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-reveal="left">
         <div class="project-header">
           <div class="project-number">05</div>
           <div class="project-content">
@@ -193,7 +193,7 @@ const BODY_HTML = `
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-reveal="right">
         <div class="project-header">
           <div class="project-number">06</div>
           <div class="project-content">
@@ -205,7 +205,7 @@ const BODY_HTML = `
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-reveal="left">
         <div class="project-header">
           <div class="project-number">07</div>
           <div class="project-content">
@@ -221,8 +221,8 @@ const BODY_HTML = `
 
   <section class="cta-section">
     <div class="cta-container">
-      <h2 class="cta-title">¿Cuál es tu operación?</h2>
-      <p class="cta-text">Cuéntanos qué necesitas resolver. Diseñamos un sistema a medida.</p>
+      <h2 class="cta-title" data-reveal="up">¿Cuál es tu operación?</h2>
+      <p class="cta-text" data-reveal="up">Cuéntanos qué necesitas resolver. Diseñamos un sistema a medida.</p>
       <a href="https://wa.me/50688597501" class="btn btn-ink">Hablemos</a>
     </div>
   </section>
@@ -378,7 +378,7 @@ const PAGE_STYLES = `
   .services { background: linear-gradient(135deg, #FFFFFF 0%, #FAF9F6 100%); padding: 160px 48px 120px; }
   .services-content { max-width: 1200px; margin: 0 auto; }
   .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; align-items: start; }
-  .service-card { background: #FFFFFF; border: 1px solid #E5E3DE; border-radius: 8px; padding: 40px; transition: all 0.4s; cursor: pointer; display: flex; flex-direction: column; min-height: 500px; }
+  .service-card { background: #FFFFFF; border: 1px solid #E5E3DE; border-radius: 8px; padding: 40px; transition: border-color 0.4s, box-shadow 0.4s; cursor: pointer; display: flex; flex-direction: column; min-height: 500px; }
   .service-card:hover { transform: translateY(-8px); border-color: #BFC2C7; }
   .service-title { font-size: 20px; font-weight: 700; margin-bottom: 16px; text-align: center; height: 60px; display: flex; align-items: center; justify-content: center; }
   .service-desc { font-size: 15px; color: #2B2B2E; margin-bottom: 24px; line-height: 1.7; text-align: center; height: 80px; display: flex; align-items: center; justify-content: center; }
@@ -407,7 +407,7 @@ const PAGE_STYLES = `
   .modal-example strong { color: #111113; font-weight: 600; }
 
   .projects-container { display: grid; gap: 24px; }
-  .project-card { background: #FFFFFF; border: 1px solid #E5E3DE; border-radius: 8px; padding: 40px; transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1); cursor: pointer; }
+  .project-card { background: #FFFFFF; border: 1px solid #E5E3DE; border-radius: 8px; padding: 40px; transition: border-color 0.4s, box-shadow 0.4s; cursor: pointer; }
   .project-card:hover { transform: translateY(-8px); border-color: #BFC2C7; box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
   .project-header { display: flex; gap: 28px; align-items: flex-start; }
   .project-number { font-size: 28px; font-weight: 700; color: #BFC2C7; flex-shrink: 0; font-family: 'Cascadia Code', monospace; letter-spacing: 2px; }
@@ -494,8 +494,65 @@ export default function Home() {
     };
     window.addEventListener("click", onWindowClick);
 
+    // Scroll-linked reveal: instead of toggling an animation class when
+    // an element crosses a trigger line (which can fire more than once
+    // per pass with stepped mouse-wheel/trackpad scrolling and looks
+    // like flicker), each element's opacity/position is driven directly
+    // and continuously by its distance from the trigger line. There is
+    // no discrete on/off state to flicker between.
+    const revealEls = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-reveal]")
+    );
+
+    let ticking = false;
+
+    const updateReveal = () => {
+      const vh = window.innerHeight;
+      const startLine = vh * 0.92;
+      const endLine = vh * 0.55;
+
+      revealEls.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        let progress = (startLine - rect.top) / (startLine - endLine);
+        progress = Math.min(1, Math.max(0, progress));
+
+        if (progress >= 1) {
+          // Fully revealed: clear inline styles so CSS (e.g. :hover)
+          // is back in control instead of being overridden by them.
+          el.style.opacity = "";
+          el.style.transform = "";
+          return;
+        }
+
+        const direction = el.dataset.reveal;
+        const distance = 1 - progress;
+        let transform = "";
+        if (direction === "left") transform = `translateX(${-60 * distance}px)`;
+        else if (direction === "right") transform = `translateX(${60 * distance}px)`;
+        else transform = `translateY(${30 * distance}px)`;
+
+        el.style.opacity = String(progress);
+        el.style.transform = transform;
+      });
+
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(updateReveal);
+      }
+    };
+
+    updateReveal();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+
     return () => {
       window.removeEventListener("click", onWindowClick);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
     };
   }, []);
 
