@@ -507,47 +507,23 @@ export default function Home() {
       rootMargin: "0px 0px -50px 0px",
     };
 
-    const timers = new Map<Element, number>();
-
-    const applyEnter = (el: HTMLElement) => {
-      if (el.classList.contains("project-card") || el.classList.contains("service-card")) {
-        const parent = el.parentElement;
-        if (!parent) return;
-        const index = Array.from(parent.children).indexOf(el);
-
-        el.classList.remove("animate-left", "animate-right");
-        void el.offsetWidth;
-
-        if (index % 2 === 0) {
-          el.classList.add("animate-left");
-        } else {
-          el.classList.add("animate-right");
-        }
-      } else {
-        el.classList.remove("animate-up");
-        void el.offsetWidth;
-        el.classList.add("animate-up");
-      }
-    };
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
         const el = entry.target as HTMLElement;
 
-        const existingTimer = timers.get(el);
-        if (existingTimer) {
-          window.clearTimeout(existingTimer);
-          timers.delete(el);
-        }
+        // Animate once, then stop observing — avoids any flicker from
+        // the element crossing the trigger boundary more than once
+        // during normal (stepped) mouse-wheel / trackpad scrolling.
+        observer.unobserve(el);
 
-        if (entry.isIntersecting) {
-          // Small debounce so a boundary that flickers in/out for a
-          // frame or two doesn't retrigger the animation repeatedly.
-          const timer = window.setTimeout(() => {
-            applyEnter(el);
-            timers.delete(el);
-          }, 80);
-          timers.set(el, timer);
+        if (el.classList.contains("project-card") || el.classList.contains("service-card")) {
+          const parent = el.parentElement;
+          if (!parent) return;
+          const index = Array.from(parent.children).indexOf(el);
+          el.classList.add(index % 2 === 0 ? "animate-left" : "animate-right");
+        } else {
+          el.classList.add("animate-up");
         }
       });
     }, observerOptions);
