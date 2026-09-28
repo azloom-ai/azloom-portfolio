@@ -239,8 +239,8 @@ const BODY_HTML = `
       </div>
       <div class="footer-col">
         <div class="footer-label">Legal</div>
-        <a href="#" class="footer-link">Política de privacidad</a>
-        <a href="#" class="footer-link">Aviso legal</a>
+        <a href="/politica-privacidad" class="footer-link">Política de privacidad</a>
+        <a href="/aviso-legal" class="footer-link">Aviso legal</a>
       </div>
     </div>
     <div class="footer-bottom">© 2026 AZLOOM · Sistemas hechos para evolucionar</div>
