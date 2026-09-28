@@ -31,6 +31,14 @@ const BODY_HTML = `
     </div>
   </section>
 
+  <section class="philosophy">
+    <div class="philosophy-content" data-reveal="up">
+      <div class="philosophy-label">Nuestra visión</div>
+      <h2 class="philosophy-title">La IA no reemplaza personas. Las libera.</h2>
+      <p class="philosophy-text">Sabemos que la inteligencia artificial genera dudas. En redes sociales el discurso es de miedo: robots que quitan trabajos, un futuro sin lugar para las personas. Nosotros lo vemos distinto. La IA es una herramienta, como lo fue la calculadora o la computadora en su momento — no reemplaza tu criterio, tu experiencia ni tu visión de negocio. Los potencia. Usada bien, la tecnología no le quita el trabajo a nadie: le da a cada persona más tiempo y espacio para hacer mejor lo que ya sabe hacer.</p>
+    </div>
+  </section>
+
   <section id="servicios" class="services">
     <div class="services-content">
       <h2 class="section-title" data-reveal="up">Qué <span>hacemos</span></h2>
@@ -367,6 +375,12 @@ const PAGE_STYLES = `
   .hero-title span { background: linear-gradient(135deg, #111113, #BFC2C7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: slideFromRight 0.8s ease-out 0.3s backwards; }
   .hero-text { font-size: 18px; color: #2B2B2E; line-height: 1.7; max-width: 600px; margin-bottom: 48px; }
 
+  .philosophy { background: #111113; padding: 120px 48px; }
+  .philosophy-content { max-width: 760px; margin: 0 auto; }
+  .philosophy-label { font-size: 11px; font-weight: 600; color: #BFC2C7; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 1px; font-family: 'Cascadia Code', monospace; }
+  .philosophy-title { font-size: 36px; font-weight: 700; color: #FFFFFF; margin-bottom: 24px; line-height: 1.3; }
+  .philosophy-text { font-size: 17px; color: #BFC2C7; line-height: 1.8; }
+
   .btn { padding: 14px 32px; border-radius: 4px; border: none; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.3s; }
   .btn-ink { background: #111113; color: #FFFFFF; }
   .btn-ink:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(17,17,19,0.15); }
@@ -450,6 +464,8 @@ const PAGE_STYLES = `
     .header { padding: 20px 24px; }
     .service-details { font-size: 13px; }
     .modal-content { padding: 32px; }
+    .philosophy { padding: 80px 24px; }
+    .philosophy-title { font-size: 28px; }
   }
 `;
 
